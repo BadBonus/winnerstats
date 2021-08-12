@@ -13,6 +13,8 @@
       body {
         font-family: "Roboto";
         background-color: #fafafa;
+        padding: 0;
+        margin: 0;
       }
       h1 {
         margin: 150px auto 30px auto;
@@ -21,7 +23,6 @@
       canvas {
       }
       .g_gracket {
-        width: 9999px;
         background-color: #1f1d29;
         padding: 55px 15px 5px;
         line-height: 100%;
@@ -46,6 +47,15 @@
       .g_team {
         border: 1px solid rgba(255, 255, 255, 0.3);
         background: rgba(255, 255, 255, 0.1) !important;
+        display: flex;
+        transition: 0.3s;
+        padding-left: 30px;
+        padding-right: 8px;
+        position: relative;
+      }
+      .g_team img {
+        width: 10px;
+        border-radius: 20px;
       }
       .g_team:first-child {
         /* border-top: unset; */
@@ -59,11 +69,11 @@
       }
       .g_winner .g_team {
         background: #444;
-		border-radius: 6px !important;
+        border-radius: 6px !important;
       }
-	  .g_winner .g_team::after{
-		border-radius: 0 6px 6px 0 !important;
-	  }
+      .g_winner .g_team::after {
+        border-radius: 0 6px 6px 0 !important;
+      }
       .g_winner .g_team {
         background: none;
       }
@@ -87,27 +97,40 @@
         position: absolute;
         right: -1px;
         height: 101%;
-        bottom: 1px;
+        bottom: 0;
         background-color: #e03d22;
         width: 6%;
       }
-	  .g_current::after {
+      .g_current::after {
         cursor: pointer;
         background: #fff !important;
       }
-	  .g_team[class*="winner"]:hover::after{
-		  background-color: #fff;
-	  }
-	  .g_winner .g_team::after {
-		border-radius:  0 6px 6px 0;
-	  }
+      .g_team[class*="winner"]:hover::after {
+        background-color: #fff;
+      }
+      .g_winner .g_team::after {
+        border-radius: 0 6px 6px 0;
+      }
 
       .g_team:first-child[class*="winner"]::after {
         /* border-top: unset; */
         border-radius: 0 6px 0 0;
       }
       .g_team:last-child[class*="winner"]::after {
-        border-radius: 0 0 6px 0 ;
+        border-radius: 0 0 6px 0;
+      }
+      .g_team__logo {
+        position: absolute;
+        width: 25px !important;
+        height: 25px !important;
+        left: 10px;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+      }
+      .wrapperGracket {
+        width: 100vw;
+        overflow-x: scroll;
       }
     </style>
 
@@ -119,8 +142,9 @@
     <script type="text/javascript" src="test.js"></script>
   </head>
   <body>
-    <!-- empty gracket element -->
-    <div class="my_gracket"></div>
+    <div class="wrapperGracket">
+      <div class="my_gracket"></div>
+    </div>
 
     <script type="text/javascript">
       (function (win, doc, $) {
@@ -129,47 +153,106 @@
           [
             [
               {
+                img: "https://picsum.photos/300/200",
                 name: "Erik Zettersten",
                 winner: 1,
-                id: "winner-erik-zettersten",
+                id: "winner-erik-zettersten erik-zettersten",
               },
-              { name: "Andrew Miller", winner: 0, id: "andrew-miller" },
-            ],
-            [
-              { name: "James Coutry", winner: 1, id: "winner-james-coutry" },
-              { name: "Sam Merrill", winner: 0, id: "sam-merrill" },
-            ],
-            [
-              { name: "Anothy Hopkins", id: "winner-anthony-hopkins" },
-              { name: "Everett Zettersten", id: "everett-zettersten" },
-            ],
-            [
-              { name: "John Scott", id: "john-scott" },
-              { name: "Teddy Koufus", id: "winner-teddy-koufus" },
-            ],
-            [
-              { name: "Arnold Palmer", id: "arnold-palmer" },
-              { name: "Ryan Anderson", winner: 1, id: "winner-ryan-anderson" },
-            ],
-            [
-              { name: "Jesse James", winner: 0, id: "jesse-james" },
               {
+                img: "https://picsum.photos/100/200",
+                name: "Andrew Miller",
+                winner: 0,
+                id: "andrew-miller",
+              },
+            ],
+            [
+              {
+                img: "https://picsum.photos/200/100",
+                name: "James Coutry",
+                winner: 1,
+                id: "winner-james-coutry james-coutry",
+              },
+              {
+                img: "https://picsum.photos/200/300",
+                name: "Sam Merrill",
+                winner: 0,
+                id: "sam-merrill",
+              },
+            ],
+            [
+              {
+                img: "https://picsum.photos/300/300",
+                name: "Anothy Hopkins",
+                id: "winner-anthony-hopkins anthony-hopkins",
+              },
+              {
+                img: "https://picsum.photos/100/100",
+                name: "Everett Zettersten",
+                id: "everett-zettersten",
+              },
+            ],
+            [
+              {
+                img: "https://picsum.photos/200/200",
+                name: "John Scott",
+                id: "john-scott",
+              },
+              {
+                img: "https://picsum.photos/200/200",
+                name: "Teddy Koufus",
+                id: "winner-teddy-koufus teddy-koufus",
+              },
+            ],
+            [
+              {
+                img: "https://picsum.photos/200/200",
+                name: "Arnold Palmer",
+                id: "arnold-palmer",
+              },
+              {
+                img: "https://picsum.photos/200/200",
+                name: "Ryan Anderson",
+                winner: 1,
+                id: "winner-ryan-anderson ryan-anderson",
+              },
+            ],
+            [
+              {
+                img: "https://picsum.photos/200/200",
+                name: "Jesse James",
+                winner: 0,
+                id: "jesse-james",
+              },
+              {
+                img: "https://picsum.photos/200/200",
                 name: "Scott Anderson",
                 winner: 1,
-                id: "winner-scott-anderson",
+                id: "winner-scott-anderson scott-anderson",
               },
             ],
             [
-              { name: "Josh Groben", winner: 0, id: "josh-groben" },
               {
+                img: "https://picsum.photos/200/200",
+                name: "Josh Groben",
+                winner: 0,
+                id: "josh-groben",
+              },
+              {
+                img: "https://picsum.photos/200/200",
                 name: "Sammy Zettersten",
                 winner: 1,
-                id: "winner-sammy-zettersten",
+                id: "winner-sammy-zettersten sammy-zettersten",
               },
             ],
             [
-              { name: "Jake Coutry", winner: 1, id: "winner-jake-coutry jake-coutry" },
               {
+                img: "https://picsum.photos/200/200",
+                name: "Jake Coutry",
+                winner: 1,
+                id: "winner-jake-coutry jake-coutry",
+              },
+              {
+                img: "https://picsum.photos/200/200",
                 name: "Spencer Zettersten",
                 winner: 0,
                 id: "spencer-zettersten",
@@ -179,87 +262,209 @@
           [
             [
               {
+                img: "https://picsum.photos/200/200",
                 name: "Erik Zettersten",
                 winner: 1,
-                id: "winner-erik-zettersten",
+                id: "winner-erik-zettersten erik-zettersten",
               },
-              { name: "James Coutry", winner: 0, id: "james-coutry" },
+              {
+                img: "https://picsum.photos/200/200",
+                name: "James Coutry",
+                winner: 0,
+                id: "james-coutry",
+              },
             ],
             [
               {
+                img: "https://picsum.photos/200/200",
                 name: "Anothy Hopkins",
                 winner: 1,
-                id: "winner-anthony-hopkins",
+                id: "winner-anthony-hopkins anthony-hopkins",
               },
-              { name: "Teddy Koufus", winner: 0, id: "teddy-koufus" },
-            ],
-            [
-              { name: "Ryan Anderson", winner: 1, id: "winner-ryan-anderson" },
-              { name: "Scott Anderson", winner: 0, id: "scott-anderson" },
+              {
+                img: "https://picsum.photos/200/200",
+                name: "Teddy Koufus",
+                winner: 0,
+                id: "teddy-koufus",
+              },
             ],
             [
               {
+                img: "https://picsum.photos/200/200",
+                name: "Ryan Anderson",
+                winner: 1,
+                id: "winner-ryan-anderson ryan-anderson",
+              },
+              {
+                img: "https://picsum.photos/200/200",
+                name: "Scott Anderson",
+                winner: 0,
+                id: "scott-anderson",
+              },
+            ],
+            [
+              {
+                img: "https://picsum.photos/200/200",
                 name: "Sammy Zettersten",
                 winner: 1,
-                id: "winner-sammy-zettersten",
+                id: "winner-sammy-zettersten sammy-zettersten",
               },
-              { name: "Jake Coutry", winner: 0, id: "jake-coutry" },
+              {
+                img: "https://picsum.photos/200/200",
+                name: "Jake Coutry",
+                winner: 0,
+                id: "jake-coutry",
+              },
             ],
           ],
           [
             [
               {
+                img: "https://picsum.photos/200/200",
                 name: "Erik Zettersten",
                 winner: 1,
-                id: "winner-erik-zettersten",
+                id: "winner-erik-zettersten erik-zettersten",
               },
-              { name: "Anothy Hopkins", winner: 0, id: "anthony-hopkins" },
+              {
+                img: "https://picsum.photos/200/200",
+                name: "Anothy Hopkins",
+                winner: 0,
+                id: "anthony-hopkins",
+              },
             ],
             [
-              { name: "Ryan Anderson", winner: 1, id: "winner-ryan-anderson" },
-              { name: "Sammy Zettersten", winner: 0, id: "sammy-zettersten" },
+              {
+                img: "https://picsum.photos/200/200",
+                name: "Ryan Anderson",
+                winner: 1,
+                id: "winner-ryan-anderson ryan-anderson",
+              },
+              {
+                img: "https://picsum.photos/200/200",
+                name: "Sammy Zettersten",
+                winner: 0,
+                id: "sammy-zettersten",
+              },
             ],
           ],
           [
             [
               {
+                img: "https://picsum.photos/200/200",
                 name: "Erik Zettersten",
                 winner: 1,
-                id: "winner-erik-zettersten",
+                id: "winner-erik-zettersten erik-zettersten",
               },
-              { name: "Ryan Anderson", winner: 0, id: "ryan-anderson" },
+              {
+                img: "https://picsum.photos/200/200",
+                name: "Ryan Anderson",
+                winner: 0,
+                id: "ryan-anderson",
+              },
             ],
           ],
           [
             [
               {
+                img: "https://picsum.photos/200/200",
                 name: "Erik Zettersten",
                 winner: 1,
-                id: "winner-erik-zettersten",
+                id: "winner-erik-zettersten erik-zettersten",
               },
             ],
           ],
         ];
 
-        // array of numbers
+        $.getJSON("response.json", function (json) {
+          const data = parseData(json);
+          // array of numbers
 
-        const numb_array = [];
-        for (let index = 0; index < win.TestData.length; index++) {
-          if (index !== win.TestData.length - 1) {
-            numb_array.push("раунд" + " " + (index + 1));
-          } else {
-            numb_array.push("победитель турнира");
+          const numb_array = [];
+          for (let index = 0; index < data.length; index++) {
+            if (index !== data.length - 1) {
+              numb_array.push("раунд" + " " + (index + 1));
+            } else {
+              numb_array.push("победитель турнира");
+            }
           }
-        }
 
-        // initializer
-        $(".my_gracket").gracket({
-          src: win.TestData,
-          roundLabels: numb_array,
+          // initializer
+          $(".my_gracket").gracket({
+            src: data,
+            roundLabels: numb_array,
+          });
+
+          //   adding images
+          document.querySelectorAll(".g_team").forEach((el) => {
+            const name = el.childNodes[0].textContent.trim();
+            const img = document.createElement("img");
+            const correctArray = data[0].find((array) => {
+              return array.find((el) => el.name === name);
+            });
+            const imgsrc = correctArray.find((obj) => obj.name === name).img;
+            img.src = imgsrc;
+            img.classList.add("g_team__logo");
+
+            el.prepend(img);
+          });
         });
-      })(window, document, jQuery);
 
-      //   added class of winners
+        // parsing function
+        function parseData({ items }) {
+          const setOfRounds = new Set();
+          let correctData = [];
+
+          items.forEach((element) => {
+            setOfRounds.add(element.round);
+          });
+          for (let index = 0; index < setOfRounds.size; index++) {
+            correctData.push([]);
+          }
+
+          items.forEach((element) => {
+            const numberOfRound = element.round;
+            const winner = element.results.winner;
+            const battle = [];
+            const faction1 = element.teams.faction1;
+            const faction2 = element.teams.faction2;
+
+            const team1 = {
+              img: faction1.avatar,
+              name: faction1.name,
+              winner: 0,
+              id: faction1.name.replace(/\s/g, ""),
+            };
+
+            const team2 = {
+              img: faction2.avatar,
+              name: faction2.name,
+              winner: 0,
+              id: faction2.name.replace(/\s/g, ""),
+            };
+
+            battle.push(team1);
+            battle.push(team2);
+
+            const winnerOfBattle = battle.find(
+              (group) => group.name === element.teams[winner].name
+            );
+
+            winnerOfBattle.id =
+              winnerOfBattle.id +
+              " " +
+              `winner-${winnerOfBattle.name.replace(/\s/g, "")}`;
+            winnerOfBattle.winner = 1;
+
+            correctData[numberOfRound - 1].push(battle);
+          });
+
+          const lastWinner = correctData[correctData.length-1][0].find(el=>el.winner === 1);
+          console.log(lastWinner);
+
+          correctData.push([[lastWinner]])
+          return correctData;
+        }
+      })(window, document, jQuery);
     </script>
   </body>
 </html>
